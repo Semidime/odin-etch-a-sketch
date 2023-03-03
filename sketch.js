@@ -1,18 +1,30 @@
-/* addSketchDiv(); 
- */
+
+
 document.addEventListener("DOMContentLoaded", function() {
-    addSketchDivs();
+    addSketchDivs(1024);
+    addSketchDivListener();
   });
 
-function addSketchDivs() {
+
+/* function to add (n) divs with class "sketch-div" and append to grid-container div*/
+  function addSketchDivs(n) {
     const gridContainer = document.querySelector('.grid-container');
-    for (i = 1; i <= 1024; i++) {  
+    for (i = 1; i <= n; i++) {  
         const newDiv = document.createElement('div');
         newDiv.classList.add('sketch-div');
-        newDiv.style.backgroundColor = 'lightgray';
+/*         newDiv.style.backgroundColor = 'lightgray'; */
         gridContainer.appendChild(newDiv);
     }
 }
 
+/* function to attach event listener to each sketch-div */
+function addSketchDivListener() {  
+const sketchDivs = document.querySelectorAll('.sketch-div');
+sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', changeClass))
+}
 
-
+/* function to add "selected" class to sketch-div on mouseover */
+function changeClass(e) {
+    this.classList.add("selectedSD");
+    console.log("wave");
+}
