@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", function() {
     addSketchDivs(1024);
     addSketchDivListener();
@@ -12,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
     for (i = 1; i <= n; i++) {  
         const newDiv = document.createElement('div');
         newDiv.classList.add('sketch-div');
-/*         newDiv.style.backgroundColor = 'lightgray'; */
         gridContainer.appendChild(newDiv);
     }
 }
@@ -24,7 +21,7 @@ sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', changeCl
 }
 
 /* function to add "selected" class to sketch-div on mouseover */
-function changeClass(e) {
+function changeClass() {
     this.classList.add("selectedSD");
     console.log("wave");
 }
