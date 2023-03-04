@@ -28,23 +28,23 @@ function changeClass() {
 
 /* add event listener to canvas size btn */
 const canvasBTN = document.querySelector('#canvasBTN');
-canvasBTN.addEventListener('click', function () {getCanvasSize()})
+canvasBTN.addEventListener('click', function () {setCanvasSize()})
 
-/*get custom canvas size */
-function getCanvasSize () {
+/*set custom canvas size */
+function setCanvasSize () {
+  const gridContainer = document.querySelector('.grid-container');
   const inputNo = parseInt(prompt('Please enter a number between 1 and 100', 32),10);
   const canvasSize = inputNo ** 2;
+ 
   console.log(canvasSize);
-  resetCanvasSize(canvasSize);
-}
 
-/* function to remove existing sketch-divs and call addSketchDivs
-with new CanvasSize */
-function resetCanvasSize(newCanvasSize) {
-  const gridContainer = document.querySelector('.grid-container');
   while (gridContainer.firstChild) {
     gridContainer.removeChild(gridContainer.lastChild)
   }
-  addSketchDivs(newCanvasSize);
+  
+  gridContainer.style.gridTemplateRows = `repeat(${inputNo}, 15px)`;
+  gridContainer.style.gridTemplateColumns = `repeat(${inputNo}, 15px)`;
+  
+  addSketchDivs(canvasSize);
   addSketchDivListener();   
 }
