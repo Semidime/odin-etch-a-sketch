@@ -9,8 +9,8 @@
     width: 650px;
     height: 650px;
     display: grid;
-    grid-template-columns: repeat(32, 1fr);
-    grid-template-rows: repeat(32, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 1px;
     grid-row-gap: 1px;    
 }

@@ -1,17 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
-    addSketchDivs(1024);
+    addSketchDivs(25);
     addSketchDivListener();
   });
 
 
 /* function to add (n) divs with class "sketch-div" and append to grid-container div*/
-  function addSketchDivs(n) {
-    const gridContainer = document.querySelector('.grid-container');
-    for (i = 1; i <= n; i++) {  
-        const newDiv = document.createElement('div');
-        newDiv.classList.add('sketch-div');
-        gridContainer.appendChild(newDiv);
-    }
+function addSketchDivs(n) {
+  const gridContainer = document.querySelector('.grid-container');
+  let idCounter = 1;
+  for (i = 1; i <= n; i++) {  
+    const newDiv = document.createElement('div');
+    console.log(idCounter);
+    newDiv.classList.add('sketch-div');
+    newDiv.id = `SD${idCounter}`;
+    gridContainer.appendChild(newDiv);
+    idCounter = idCounter + 1;    
+  }
 }
 
 /* function to attach event listener to each sketch-div */
@@ -30,12 +34,18 @@ sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', randomRG
 function randomRGB() {
   console.log("wave");
   console.log(this);
+  console.log(this.id);
   const R = parseInt((Math.floor(Math.random()*255)+1),10);
   const G = parseInt((Math.floor(Math.random()*255)+1),10);
   const B = parseInt(Math.floor((Math.random()*255)+1),10);
   this.style.backgroundColor=`rgb(${R},${G},${B})`;
   console.log(this.style.backgroundColor);
 }
+
+/* add 10% black to sketchDiv on mouseover */
+/* function fadeBlack() {
+ 
+} */
 
 /* add event listener to canvas size btn */
 const canvasBTN = document.querySelector('#canvasBTN');
