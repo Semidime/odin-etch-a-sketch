@@ -42,8 +42,8 @@ function setCanvasSize () {
     gridContainer.removeChild(gridContainer.lastChild)
   }
   
-  gridContainer.style.gridTemplateRows = `repeat(${inputNo}, 15px)`;
-  gridContainer.style.gridTemplateColumns = `repeat(${inputNo}, 15px)`;
+  gridContainer.style.gridTemplateRows = `repeat(${inputNo}, 1fr)`;
+  gridContainer.style.gridTemplateColumns = `repeat(${inputNo}, 1fr)`;
   
   addSketchDivs(canvasSize);
   addSketchDivListener();   

@@ -5,18 +5,20 @@
 }
 
 .grid-container {
-    margin: 100px;
+    margin: 50px;
+    width: 650px;
+    height: 650px;
     display: grid;
-    grid-template-columns: repeat(32, 15px);
-    grid-template-rows: repeat(32, 15px);
+    grid-template-columns: repeat(32, 1fr);
+    grid-template-rows: repeat(32, 1fr);
     grid-column-gap: 1px;
     grid-row-gap: 1px;    
 }
 
 .sketch-div {
     /*         border: 1px solid red; */
-    height: 15px;
-    width: 15px;
+/*     height: 15px;
+    width: 15px; */
     background-color: lightgray;
 }
 
