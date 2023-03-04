@@ -17,13 +17,24 @@ document.addEventListener('DOMContentLoaded', function() {
 /* function to attach event listener to each sketch-div */
 function addSketchDivListener() {  
 const sketchDivs = document.querySelectorAll('.sketch-div');
-sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', changeClass))
+sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', randomRGB))
 }
 
 /* function to add "selected" class to sketch-div on mouseover */
-function changeClass() {
+/* function changeClass() {
     this.classList.add('selectedSD');
     console.log("wave");
+} */
+
+/* randomly change RGB on mouseover */
+function randomRGB() {
+  console.log("wave");
+  console.log(this);
+  const R = parseInt((Math.floor(Math.random()*255)+1),10);
+  const G = parseInt((Math.floor(Math.random()*255)+1),10);
+  const B = parseInt(Math.floor((Math.random()*255)+1),10);
+  this.style.backgroundColor=`rgb(${R},${G},${B})`;
+  console.log(this.style.backgroundColor);
 }
 
 /* add event listener to canvas size btn */
@@ -36,8 +47,6 @@ function setCanvasSize () {
   const inputNo = parseInt(prompt('Please enter a number between 1 and 100', 32),10);
   const canvasSize = inputNo ** 2;
  
-  console.log(canvasSize);
-
   while (gridContainer.firstChild) {
     gridContainer.removeChild(gridContainer.lastChild)
   }
