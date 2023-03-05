@@ -30,15 +30,17 @@ sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', randomRG
     console.log("wave");
 } */
 
-/* randomly change RGB on mouseover */
+/* randomly assign RGB on first mouseover 
+remove if statement to change RGB on every mousover*/
 function randomRGB() {
-  console.log("wave");
   console.log(this);
   console.log(this.id);
-  const R = parseInt((Math.floor(Math.random()*255)+1),10);
-  const G = parseInt((Math.floor(Math.random()*255)+1),10);
-  const B = parseInt(Math.floor((Math.random()*255)+1),10);
-  this.style.backgroundColor=`rgb(${R},${G},${B})`;
+  if (this.style.backgroundColor === "") {
+    const R = parseInt(Math.floor(Math.random()*256),10);
+    const G = parseInt(Math.floor(Math.random()*256),10);
+    const B = parseInt(Math.floor(Math.random()*256),10);
+    this.style.backgroundColor=`rgb(${R},${G},${B})`;
+  }
   console.log(this.style.backgroundColor);
 }
 
@@ -54,7 +56,9 @@ canvasBTN.addEventListener('click', function () {setCanvasSize()})
 /*set custom canvas size */
 function setCanvasSize () {
   const gridContainer = document.querySelector('.grid-container');
-  const inputNo = parseInt(prompt('Please enter a number between 1 and 100', 32),10);
+  let inputNo = parseInt(prompt('Please enter a number between 1 and 100', 5),10);
+  if (inputNo > 100) {inputNo = 100};
+  if (inputNo < 1) {inputNo = 1};
   const canvasSize = inputNo ** 2;
  
   while (gridContainer.firstChild) {
