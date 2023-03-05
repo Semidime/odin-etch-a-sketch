@@ -21,18 +21,25 @@ function addSketchDivs(n) {
 /* function to attach event listener to each sketch-div */
 function addSketchDivListener() {  
 const sketchDivs = document.querySelectorAll('.sketch-div');
-sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', randomRGB))
+sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', changeColor))
 }
 
+/* function to control behavious on sketchDiv mouseover */
+function changeColor() {
+  console.log(this.id);
+  assignColor();
+  assignOpacity();  
+}
 /* function to add "selected" class to sketch-div on mouseover */
 /* function changeClass() {
     this.classList.add('selectedSD');
     console.log("wave");
 } */
 
+
 /* randomly assign RGB on first mouseover 
 remove if statement to change RGB on every mousover*/
-function randomRGB() {
+function assignColor() {
   console.log(this);
   console.log(this.id);
   if (this.style.backgroundColor === "") {
@@ -43,11 +50,23 @@ function randomRGB() {
   }
   console.log(this.style.backgroundColor);
 }
-
-/* add 10% black to sketchDiv on mouseover */
-/* function fadeBlack() {
  
-} */
+function assignOpacity() {
+  console.log(this);
+  console.log(this.id);
+  console.log(this.style.opacity);
+  if (this.style.opacity === "") {
+    this.style.opacity = 0.1;
+  } else if (parseFloat(this.style.opacity) > 0 && parseFloat(this.style.opacity) < 1) {
+    const oldOpacity = parseFloat(this.style.opacity);
+    const newOpacity = oldOpacity + 0.1;
+    console.log(oldOpacity);
+    console.log(newOpacity);
+    this.style.opacity = newOpacity;
+  }
+  console.log(this.style.opacity);
+}
+
 
 /* add event listener to canvas size btn */
 const canvasBTN = document.querySelector('#canvasBTN');
