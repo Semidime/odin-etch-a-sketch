@@ -42,7 +42,6 @@ function changeColor() {
 /* randomly assign RGB on first mouseover 
 remove if statement to change RGB on every mousover*/
 function assignColor(sdID) {
-  console.log(sdID);
   const sketchDiv = document.querySelector(`#${sdID}`)
   
   if (sketchDiv.style.backgroundColor === "") {
@@ -55,16 +54,15 @@ function assignColor(sdID) {
 }
  
 /* function to check if opacity has been assigned, if not assign an initial value
-if value already assigned increment value by 0.1 */
+if value already assigned increment value on each subsequent mouseover*/
 function assignOpacity(sdID) {
-  console.log(sdID);
   const sketchDiv = document.querySelector(`#${sdID}`)
 
   if (sketchDiv.style.opacity === "") {
-    sketchDiv.style.opacity = 0.1;
+    sketchDiv.style.opacity = 0.25;
   } else if (parseFloat(sketchDiv.style.opacity) > 0 && parseFloat(sketchDiv.style.opacity) < 1) {
     const oldOpacity = parseFloat(sketchDiv.style.opacity);
-    const newOpacity = oldOpacity + 0.1;
+    const newOpacity = oldOpacity + 0.25;
     console.log(oldOpacity);
     console.log(newOpacity);
     sketchDiv.style.opacity = newOpacity;
