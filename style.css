@@ -8,6 +8,7 @@
     margin: 50px;
     width: 500px;
     height: 500px;
+    background-color:white;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
