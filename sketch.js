@@ -31,12 +31,13 @@ function changeColor() {
   console.log(this.id);
   assignColor(this.id);
   assignOpacity(this.id);
+/*   assignClass(this.id); */
 }
-/* function to add "selected" class to sketch-div on mouseover */
-/* function changeClass() {
-    this.classList.add('selectedSD');
-    console.log("wave");
-} */
+/* function to add "selectedSD" class to sketchDiv on mouseover */
+function assignClass(sdID) {
+    const sketchDiv = document.querySelector(`#${sdID}`)
+    sketchDiv.classList.add('selectedSD');
+}
 
 
 /* randomly assign RGB on first mouseover 

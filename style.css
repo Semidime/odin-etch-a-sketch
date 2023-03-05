@@ -23,3 +23,19 @@
 .sketch-div.selectedSD {
     background-color: firebrick;
 }
+
+.palette-container {
+    margin: 50px;
+    width: 500px;
+    height: 100px;
+    background-color:white;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;    
+}
+
+.color-div  {
+    border: 1px solid gray
+}
