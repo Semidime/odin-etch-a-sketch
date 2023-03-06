@@ -3,7 +3,6 @@ addColorPaletteListener();
 addCanvasListener();
 let brushColor = 'rgb(0, 0, 0)';    
 
-
 /* function to add (n) divs with class "sketch-div", append to grid-container div and attach
 event listener to each sketchDiv*/
 function addSketchDivs(n) {
@@ -37,24 +36,17 @@ function addColorPaletteListener() {
   randBtn.addEventListener('click',setRandomBrushColor)
 }
 
-
-
-
-
 /* assignColor function - called on sketchDiv mouseover*/
 function assignBGColor() {
   console.log(this);
   console.log(this.id);
   const sketchDiv = document.querySelector(`#${this.id}`);
-  console.log(sketchDiv.style.backgroundColor);
-  console.log(brushColor);
-  console.log(sketchDiv.style.opacity);
   
   /* set opacity */
   if(sketchDiv.style.backgroundColor!=brushColor) {
-    sketchDiv.style.opacity = 0.2;
+    sketchDiv.style.opacity = 0.5;
   } else if (parseFloat(sketchDiv.style.opacity) < 1) {
-    sketchDiv.style.opacity = parseFloat(sketchDiv.style.opacity) + 0.2;
+    sketchDiv.style.opacity = parseFloat(sketchDiv.style.opacity) + 0.5;
   } 
 
   /* set backgroundColor */

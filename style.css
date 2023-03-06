@@ -41,3 +41,8 @@
 .color-div  {
     border: 1px solid gray
 }
+
+#rand-col {
+    border: 1px solid gray;
+    text-align: center;
+}
