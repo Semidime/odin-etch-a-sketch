@@ -1,7 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
-    addSketchDivs(25);
-    addSketchDivListener();
-  });
+addSketchDivs(25);
+addSketchDivListener();
+addColorPaletteListener();
+addCanvasListener();
+let brushColor = "";    
+
 
 
 /* function to add (n) divs with class "sketch-div" and append to grid-container div*/
@@ -24,7 +26,7 @@ const sketchDivs = document.querySelectorAll('.sketch-div');
 sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', changeColor))
 }
 
-/* function to control behavious on sketchDiv mouseover 
+/* function to control behaviour on sketchDiv mouseover 
 calls selected functions and passes sketchDiv id as an argument*/
 function changeColor() {
   console.log(this);
@@ -71,10 +73,27 @@ function assignOpacity(sdID) {
   console.log(sketchDiv.style.opacity);
 }
 
+/* add event listener to palette */
+function addColorPaletteListener() {
+  const colorDivs = document.querySelectorAll('.color-div');
+  colorDivs.forEach(colorDiv => colorDiv.addEventListener('click',setBrushColor))
+}
+
+/* setBrushColor function */
+function setBrushColor() {
+  console.log(this);
+  console.log(this.id);
+  
+  brushColor = this.style.backgroundColor
+  console.log(brushColor)
+
+}
 
 /* add event listener to canvas size btn */
+function addCanvasListener() {
 const canvasBTN = document.querySelector('#canvasBTN');
-canvasBTN.addEventListener('click', function () {setCanvasSize()})
+  canvasBTN.addEventListener('click', function () {setCanvasSize()})
+}
 
 /*set custom canvas size */
 function setCanvasSize () {
@@ -92,5 +111,5 @@ function setCanvasSize () {
   gridContainer.style.gridTemplateColumns = `repeat(${inputNo}, 1fr)`;
   
   addSketchDivs(canvasSize);
-  addSketchDivListener();   
+  addSketchDivListener();
 }
