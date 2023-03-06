@@ -1,12 +1,12 @@
 addSketchDivs(25);
-addSketchDivListener();
 addColorPaletteListener();
 addCanvasListener();
 let brushColor = "";    
 
 
 
-/* function to add (n) divs with class "sketch-div" and append to grid-container div*/
+/* function to add (n) divs with class "sketch-div", append to grid-container div and attach
+event listener to each sketchDiv*/
 function addSketchDivs(n) {
   const gridContainer = document.querySelector('.grid-container');
   let idCounter = 1;
@@ -18,20 +18,18 @@ function addSketchDivs(n) {
     gridContainer.appendChild(newDiv);
     idCounter = idCounter + 1;    
   }
+
+  const sketchDivs = document.querySelectorAll('.sketch-div');
+  sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', changeColor))
 }
 
-/* function to attach event listener to each sketch-div */
-function addSketchDivListener() {  
-const sketchDivs = document.querySelectorAll('.sketch-div');
-sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', changeColor))
-}
 
 /* function to control behaviour on sketchDiv mouseover 
 calls selected functions and passes sketchDiv id as an argument*/
 function changeColor() {
   console.log(this);
   console.log(this.id);
-  assignColor(this.id);
+  assignRandomColor(this.id);
   assignOpacity(this.id);
 /*   assignClass(this.id); */
 }
@@ -44,7 +42,7 @@ function assignClass(sdID) {
 
 /* randomly assign RGB on first mouseover 
 remove if statement to change RGB on every mousover*/
-function assignColor(sdID) {
+function assignRandomColor(sdID) {
   const sketchDiv = document.querySelector(`#${sdID}`)
   
   if (sketchDiv.style.backgroundColor === "") {
@@ -111,5 +109,4 @@ function setCanvasSize () {
   gridContainer.style.gridTemplateColumns = `repeat(${inputNo}, 1fr)`;
   
   addSketchDivs(canvasSize);
-  addSketchDivListener();
 }
