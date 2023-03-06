@@ -1,7 +1,7 @@
 addSketchDivs(25);
 addColorPaletteListener();
 addCanvasListener();
-let brushColor = "";    
+let brushColor = 'rgb(0, 0, 0)';    
 
 
 /* function to add (n) divs with class "sketch-div", append to grid-container div and attach
@@ -19,7 +19,7 @@ function addSketchDivs(n) {
   }
 
   const sketchDivs = document.querySelectorAll('.sketch-div');
-  sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', changeColor))
+  sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', assignBGColor))
 }
 
 /* add event listener to canvas size btn */
@@ -38,52 +38,32 @@ function addColorPaletteListener() {
 }
 
 
-/* function to control behaviour on sketchDiv mouseover 
-calls selected functions and passes sketchDiv id as an argument*/
-function changeColor() {
+
+
+
+/* assignColor function - called on sketchDiv mouseover*/
+function assignBGColor() {
   console.log(this);
   console.log(this.id);
-  
-  assignOpacity(this.id);
-  assignRandomColor(this.id);
-/*   assignClass(this.id); */
-}
-/* function to add "selectedSD" class to sketchDiv on mouseover */
-function assignClass(sdID) {
-    const sketchDiv = document.querySelector(`#${sdID}`)
-    sketchDiv.classList.add('selectedSD');
-}
-
-/* randomly assign RGB on first mouseover 
-remove if statement to change RGB on every mousover*/
-function assignRandomColor(sdID) {
-  const sketchDiv = document.querySelector(`#${sdID}`)
-  
-  if (sketchDiv.style.backgroundColor === "") {
-    const R = parseInt(Math.floor(Math.random()*256),10);
-    const G = parseInt(Math.floor(Math.random()*256),10);
-    const B = parseInt(Math.floor(Math.random()*256),10);
-    sketchDiv.style.backgroundColor=`rgb(${R},${G},${B})`;
-  }
+  const sketchDiv = document.querySelector(`#${this.id}`);
   console.log(sketchDiv.style.backgroundColor);
-}
- 
-/* function to check if opacity has been assigned, if not assign an initial value
-if value already assigned increment value on each subsequent mouseover*/
-function assignOpacity(sdID) {
-  const sketchDiv = document.querySelector(`#${sdID}`)
+  console.log(brushColor);
+  console.log(sketchDiv.style.opacity);
+  
+  /* set opacity */
+  if(sketchDiv.style.backgroundColor!=brushColor) {
+    sketchDiv.style.opacity = 0.2;
+  } else if (parseFloat(sketchDiv.style.opacity) < 1) {
+    sketchDiv.style.opacity = parseFloat(sketchDiv.style.opacity) + 0.2;
+  } 
 
-  if (sketchDiv.style.opacity === "") {
-    sketchDiv.style.opacity = 0.25;
-  } else if (parseFloat(sketchDiv.style.opacity) > 0 && parseFloat(sketchDiv.style.opacity) < 1) {
-    const oldOpacity = parseFloat(sketchDiv.style.opacity);
-    const newOpacity = oldOpacity + 0.25;
-    console.log(oldOpacity);
-    console.log(newOpacity);
-    sketchDiv.style.opacity = newOpacity;
-  }
+  /* set backgroundColor */
+  sketchDiv.style.backgroundColor=brushColor;
+
+  console.log(sketchDiv.style.backgroundColor);
   console.log(sketchDiv.style.opacity);
 }
+
 
 
 /* setBrushColor function */
@@ -104,7 +84,7 @@ function setRandomBrushColor() {
   const R = parseInt(Math.floor(Math.random()*256),10);
   const G = parseInt(Math.floor(Math.random()*256),10);
   const B = parseInt(Math.floor(Math.random()*256),10);
-  brushColor=`rgb(${R},${G},${B})`;
+  brushColor=`rgb(${R}, ${G}, ${B})`;
   
   console.log(brushColor)
 }
