@@ -1,4 +1,4 @@
-addSketchDivs(1024);
+addSketchDivs(400);
 addColorPaletteListener();
 addCanvasListener();
 let brushColor = 'rgb(0, 0, 0)';    
@@ -79,13 +79,16 @@ function setRandomBrushColor() {
   brushColor=`rgb(${R}, ${G}, ${B})`;
   
   console.log(brushColor)
+  
+  const randBtn = document.querySelector('#rand-col');
+  randBtn.style.backgroundColor=`rgb(${R}, ${G}, ${B})`;
 }
 
 
 /*set custom canvas size */
 function setCanvasSize () {
   const gridContainer = document.querySelector('.grid-container');
-  let inputNo = parseInt(prompt('Please enter a number between 1 and 100', 5),10);
+  let inputNo = parseInt(prompt('Please enter a number between 1 and 100', 20),10);
   if (inputNo > 100) {inputNo = 100};
   if (inputNo < 1) {inputNo = 1};
   const canvasSize = inputNo ** 2;
