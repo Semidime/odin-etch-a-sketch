@@ -4,7 +4,6 @@ addCanvasListener();
 let brushColor = "";    
 
 
-
 /* function to add (n) divs with class "sketch-div", append to grid-container div and attach
 event listener to each sketchDiv*/
 function addSketchDivs(n) {
@@ -23,14 +22,30 @@ function addSketchDivs(n) {
   sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', changeColor))
 }
 
+/* add event listener to canvas size btn */
+function addCanvasListener() {
+  const canvasBtn = document.querySelector('#canvasBTN');
+  canvasBtn.addEventListener('click', setCanvasSize)
+}
+
+/* add event listener to palette */
+function addColorPaletteListener() {
+  const colorDivs = document.querySelectorAll('.color-div');
+  colorDivs.forEach(colorDiv => colorDiv.addEventListener('click',setBrushColor))
+
+  const randBtn = document.querySelector('#rand-col');
+  randBtn.addEventListener('click',setRandomBrushColor)
+}
+
 
 /* function to control behaviour on sketchDiv mouseover 
 calls selected functions and passes sketchDiv id as an argument*/
 function changeColor() {
   console.log(this);
   console.log(this.id);
-  assignRandomColor(this.id);
+  
   assignOpacity(this.id);
+  assignRandomColor(this.id);
 /*   assignClass(this.id); */
 }
 /* function to add "selectedSD" class to sketchDiv on mouseover */
@@ -38,7 +53,6 @@ function assignClass(sdID) {
     const sketchDiv = document.querySelector(`#${sdID}`)
     sketchDiv.classList.add('selectedSD');
 }
-
 
 /* randomly assign RGB on first mouseover 
 remove if statement to change RGB on every mousover*/
@@ -71,11 +85,6 @@ function assignOpacity(sdID) {
   console.log(sketchDiv.style.opacity);
 }
 
-/* add event listener to palette */
-function addColorPaletteListener() {
-  const colorDivs = document.querySelectorAll('.color-div');
-  colorDivs.forEach(colorDiv => colorDiv.addEventListener('click',setBrushColor))
-}
 
 /* setBrushColor function */
 function setBrushColor() {
@@ -87,11 +96,19 @@ function setBrushColor() {
 
 }
 
-/* add event listener to canvas size btn */
-function addCanvasListener() {
-const canvasBTN = document.querySelector('#canvasBTN');
-  canvasBTN.addEventListener('click', function () {setCanvasSize()})
+/* setRandomBrushColor function */
+function setRandomBrushColor() {
+  console.log(this);
+  console.log(this.id);
+
+  const R = parseInt(Math.floor(Math.random()*256),10);
+  const G = parseInt(Math.floor(Math.random()*256),10);
+  const B = parseInt(Math.floor(Math.random()*256),10);
+  brushColor=`rgb(${R},${G},${B})`;
+  
+  console.log(brushColor)
 }
+
 
 /*set custom canvas size */
 function setCanvasSize () {
