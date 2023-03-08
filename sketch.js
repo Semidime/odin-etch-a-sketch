@@ -130,7 +130,7 @@ function selectRainbowBrush() {
 /*set custom canvas size */
 function setCanvasSize () {
   const gridContainer = document.querySelector('.grid-container');
-  let colNo = parseInt(prompt('Please enter a number between 5 and 50', 20),10);
+  let colNo = parseInt(prompt('Please enter a number between 5 and 50', 30),10);
   if (colNo > 50) {colNo = 50};
   if (colNo < 5) {colNo = 5};
   const colWidth = Math.round((535 - 2 - ((colNo-2)*2)) / colNo);
