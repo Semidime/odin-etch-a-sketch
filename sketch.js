@@ -79,17 +79,36 @@ function setRandomBrushColor() {
   brushColor=`rgb(${R}, ${G}, ${B})`;
   
   console.log(brushColor)
-  
+
+  setRandomBrushBG(R,G,B);                                                                                                                                                                                                                                               
+}
+
+/* set background color of "Surprise Me" option */
+function setRandomBrushBG(R,G,B) {
+
   const randBtn = document.querySelector('#rand-col');
   randBtn.style.backgroundColor=`rgb(${R}, ${G}, ${B})`;
+
+  /* convert RBG colour to find luminance value  */
+
+  const maxRGB = Math.max(R, G, B)/255;
+  const minRGB = Math.min(R, G, B)/255;
+  const luminance =  (maxRGB + minRGB)/2;
+  console.log(luminance);
+
+  if (luminance < 0.5) {
+    randBtn.style.color='white'
+  } else {
+    randBtn.style.color='black'
+  }
 }
 
 
 /*set custom canvas size */
 function setCanvasSize () {
   const gridContainer = document.querySelector('.grid-container');
-  let inputNo = parseInt(prompt('Please enter a number between 1 and 100', 20),10);
-  if (inputNo > 100) {inputNo = 100};
+  let inputNo = parseInt(prompt('Please enter a number between 1 and 50', 20),10);
+  if (inputNo > 50) {inputNo = 50};
   if (inputNo < 1) {inputNo = 1};
   const canvasSize = inputNo ** 2;
  
