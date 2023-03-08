@@ -31,15 +31,15 @@
     border: 1px solid gray;
     border-radius: 5%;
     display: grid;
-    grid-template-columns: repeat(20, 1fr);
-    grid-template-rows: repeat(20, 1fr);
+    grid-template-columns: repeat(30, 1fr);
+    grid-template-rows: repeat(24, 1fr);
     grid-column-gap: 1px;
     grid-row-gap: 1px;    
 }
 
 .sketch-div {
 /*     background-color: lightgray; */
-    border: 1px solid gray;
+/*     border: 1px solid gray; */
 }
 
 .sketch-div.selectedSD {
@@ -67,6 +67,8 @@
 
 #rand-col {
     border: 1px solid gray;
+    display: flex;
+    align-items: center;
     text-align: center;
 }
 #rainbow {
