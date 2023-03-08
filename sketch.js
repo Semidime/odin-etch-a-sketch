@@ -1,4 +1,4 @@
-addSketchDivs(400);
+addSketchDivs(720);
 addColorPaletteListener();
 addCanvasListener();
 let brushColor = 'rgb(0, 0, 0)';    
@@ -27,7 +27,7 @@ function addCanvasListener() {
   canvasBtn.addEventListener('click', setCanvasSize)
 }
 
-/* add event listener to palette */
+/* add event listeners to palette */
 function addColorPaletteListener() {
   const colorDivs = document.querySelectorAll('.color-div');
   colorDivs.forEach(colorDiv => colorDiv.addEventListener('click',setBrushColor));
@@ -45,7 +45,8 @@ function assignBGColor() {
   console.log(this.id);
   const sketchDiv = document.querySelector(`#${this.id}`);
   
-  /* if "rainbow" selected, call random background function */
+  /* if "rainbow" selected, set background color to change to random color
+  on each mouseover */
 
   if (brushColor === 'rainbow') {
     const R = parseInt(Math.floor(Math.random()*256),10);
@@ -129,17 +130,20 @@ function selectRainbowBrush() {
 /*set custom canvas size */
 function setCanvasSize () {
   const gridContainer = document.querySelector('.grid-container');
-  let inputNo = parseInt(prompt('Please enter a number between 1 and 50', 20),10);
-  if (inputNo > 50) {inputNo = 50};
-  if (inputNo < 1) {inputNo = 1};
-  const canvasSize = inputNo ** 2;
+  let colNo = parseInt(prompt('Please enter a number between 5 and 50', 20),10);
+  if (colNo > 50) {colNo = 50};
+  if (colNo < 5) {colNo = 5};
+  const colWidth = Math.round((535 - 2 - ((colNo-2)*2)) / colNo);
+  const rowNo = Math.floor(395 / colWidth);
+  const canvasSize = colNo * rowNo;
+  console.log(rowNo);
  
   while (gridContainer.firstChild) {
     gridContainer.removeChild(gridContainer.lastChild)
   }
   
-  gridContainer.style.gridTemplateRows = `repeat(${inputNo}, 1fr)`;
-  gridContainer.style.gridTemplateColumns = `repeat(${inputNo}, 1fr)`;
+  gridContainer.style.gridTemplateColumns = `repeat(${colNo}, 1fr)`;
+  gridContainer.style.gridTemplateRows = `repeat(${rowNo}, 1fr)`;
   
   addSketchDivs(canvasSize);
 }
