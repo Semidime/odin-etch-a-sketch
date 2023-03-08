@@ -46,3 +46,9 @@
     border: 1px solid gray;
     text-align: center;
 }
+#rainbow {
+    border: 1px solid gray;
+    text-align: center;
+    background-image: url(images/rainbow.png);
+    background-size: cover;
+}

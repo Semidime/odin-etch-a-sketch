@@ -30,10 +30,13 @@ function addCanvasListener() {
 /* add event listener to palette */
 function addColorPaletteListener() {
   const colorDivs = document.querySelectorAll('.color-div');
-  colorDivs.forEach(colorDiv => colorDiv.addEventListener('click',setBrushColor))
+  colorDivs.forEach(colorDiv => colorDiv.addEventListener('click',setBrushColor));
 
   const randBtn = document.querySelector('#rand-col');
-  randBtn.addEventListener('click',setRandomBrushColor)
+  randBtn.addEventListener('click',setRandomBrushColor);
+
+  const rainbowBtn = document.querySelector('#rainbow');
+  rainbowBtn.addEventListener('click',selectRainbowBrush);
 }
 
 /* assignColor function - called on sketchDiv mouseover*/
@@ -42,16 +45,26 @@ function assignBGColor() {
   console.log(this.id);
   const sketchDiv = document.querySelector(`#${this.id}`);
   
-  /* set opacity */
-  if(sketchDiv.style.backgroundColor!=brushColor) {
-    sketchDiv.style.opacity = 0.5;
-  } else if (parseFloat(sketchDiv.style.opacity) < 1) {
-    sketchDiv.style.opacity = parseFloat(sketchDiv.style.opacity) + 0.5;
-  } 
+  /* if "rainbow" selected, call random background function */
 
-  /* set backgroundColor */
-  sketchDiv.style.backgroundColor=brushColor;
+  if (brushColor === 'rainbow') {
+    const R = parseInt(Math.floor(Math.random()*256),10);
+    const G = parseInt(Math.floor(Math.random()*256),10);
+    const B = parseInt(Math.floor(Math.random()*256),10);
+    sketchDiv.style.backgroundColor=`rgb(${R},${G},${B})`;
 
+  } else {
+
+    /* set opacity */
+    if(sketchDiv.style.backgroundColor!=brushColor) {
+      sketchDiv.style.opacity = 0.5;
+    } else if (parseFloat(sketchDiv.style.opacity) < 1) {
+      sketchDiv.style.opacity = parseFloat(sketchDiv.style.opacity) + 0.5;
+    } 
+
+    /* set backgroundColor */
+    sketchDiv.style.backgroundColor=brushColor;
+  }
   console.log(sketchDiv.style.backgroundColor);
   console.log(sketchDiv.style.opacity);
 }
@@ -101,6 +114,15 @@ function setRandomBrushBG(R,G,B) {
   } else {
     randBtn.style.color='black'
   }
+}
+
+/* selectRainbowBrush function */
+function selectRainbowBrush() {
+  console.log(this);
+  console.log(this.id);
+  
+  brushColor = 'rainbow';
+  console.log(brushColor);
 }
 
 
