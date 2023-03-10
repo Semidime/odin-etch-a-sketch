@@ -93,7 +93,7 @@ function setRandomBrushColor() {
   
   console.log(brushColor)
 
-   removeSelected();applied 
+  removeSelected();
   this.classList.add('selected');
 
   setRandomBrushBG(R,G,B);                                                                                                                                                                                                                                               

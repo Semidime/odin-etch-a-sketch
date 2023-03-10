@@ -85,8 +85,6 @@ body {
 
 #rand-col {
     border: 1px solid gray;
-/*     background-color: white;
-    opacity: 0.9; */
     display: flex;
     font-weight: bolder;
     justify-content: center;
@@ -107,4 +105,12 @@ body {
     text-align: center;
     background-image: url(images/vecteezy_icon-vector-of-eraser-line-style_2.png);
     background-size: 73px;
+}
+
+#canvasBTN {
+    padding: 5px;
+    background-color: rgb(212, 212, 212);
+    box-shadow: 0 0 1rem rgb(95, 95, 95);
+    border-radius: 5px;
+    font-weight: bold;
 }
