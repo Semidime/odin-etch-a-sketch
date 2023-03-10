@@ -2,23 +2,19 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;    
-
 }
 
-body{
+body {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: linen;
+    background-image: url(images/laura-adai-c7u-t1PZEbg-unsplash.jpg);
+    background-size: cover;
 }
 
 .header, .footer {
     height: 50px;
-}
-
-.main {
-    background-color: linen;
 }
 
 .eas-container {
@@ -38,13 +34,13 @@ body{
     height: 600px;
     background-image: url(images/background.png);
     background-size: cover;
+    opacity: 0.95;
 }
 
 .grid-container {
     margin: 93px 0px 0px 97px;
     width: 535px;
     height: 395px;
-/*     background-color:white; */
     border: 1px solid gray;
     border-radius: 5%;
     display: grid;
@@ -68,13 +64,11 @@ body{
     width: 150px;
     height: 500px;
     flex-shrink: 0;
-/*     background-color:white; */
+    opacity: 0.8;
     border: 1px solid gray;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(8, 1fr);
-/*     grid-column-gap: 1px;
-    grid-row-gap: 1px;   */  
 }
 
 
@@ -101,4 +95,6 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-image: url(images/vecteezy_icon-vector-of-eraser-line-style_2.png);
+    background-size: 73px;
 }
