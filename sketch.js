@@ -1,4 +1,4 @@
-addSketchDivs(30,24);
+addSketchDivs(30,30);
 addColorPaletteListener();
 addCanvasListener();
 let brushColor = 'rgb(0, 0, 0)';
@@ -153,8 +153,8 @@ function setCanvasSize () {
   let colNo = parseInt(prompt('Please enter a number between 5 and 50', 30),10);
   if (colNo > 50) {colNo = 50};
   if (colNo < 5) {colNo = 5};
-  const colWidth = Math.round((535 - 2 - ((colNo-2)*2)) / colNo);
-  const rowNo = Math.floor(395 / colWidth);
+/*   const colWidth = Math.round((535 - 2 - ((colNo-2)*2)) / colNo); */
+  const rowNo = colNo/* Math.floor(395 / colWidth) */;
   /* const canvasSize = colNo * rowNo; */
   console.log(rowNo);
  

@@ -31,21 +31,21 @@ body {
 .eas-bg {
     flex-shrink: 0;
     width: 725px;
-    height: 600px;
-    background-image: url(images/background.png);
+    height: 745px;
+    background-image: url(images/background_square.png);
     background-size: cover;
     opacity: 0.95;
 }
 
 .grid-container {
-    margin: 93px 0px 0px 97px;
+    margin: 95px 0px 0px 97px;
     width: 535px;
-    height: 395px;
+    height: 535px;
     border: 1px solid gray;
     border-radius: 5%;
     display: grid;
     grid-template-columns: repeat(30, 1fr);
-    grid-template-rows: repeat(24, 1fr);
+    grid-template-rows: repeat(30, 1fr);
     grid-column-gap: 1px;
     grid-row-gap: 1px;    
 }
