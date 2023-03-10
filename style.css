@@ -113,4 +113,5 @@ body {
     box-shadow: 0 0 1rem rgb(95, 95, 95);
     border-radius: 5px;
     font-weight: bold;
+    opacity: 0.6;
 }
