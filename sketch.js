@@ -1,4 +1,4 @@
-addSketchDivs(720);
+addSketchDivs(30,24);
 addColorPaletteListener();
 addCanvasListener();
 toggleDisableDrawing();
@@ -7,7 +7,8 @@ let disableDrawing = 0;
 
 /* function to add (n) divs with class "sketch-div", append to grid-container div and attach
 event listener to each sketchDiv*/
-function addSketchDivs(n) {
+function addSketchDivs(cols, rows) {
+  const n = cols * rows;
   const gridContainer = document.querySelector('.grid-container');
   let idCounter = 1;
   for (i = 1; i <= n; i++) {  
@@ -19,6 +20,18 @@ function addSketchDivs(n) {
     idCounter = idCounter + 1;    
   }
 
+  /* rounded corners */
+  const topLeft = document.querySelector('#SD1');
+  const topRight = document.querySelector(`#SD${cols}`);
+  const bottomRight = document.querySelector(`#SD${n}`);
+  const bottomLeft = document.querySelector(`#SD${(cols * (rows - 1)) + 1}`);
+  
+  topLeft.style.borderRadius = '20px 0 0 0';
+  topRight.style.borderRadius = '0 20px 0 0';
+  bottomRight.style.borderRadius ='0 0 20px 0'; 
+  bottomLeft.style.borderRadius = '0 0 0 20px';
+
+  /* event listener added to each sketchDiv */
   const sketchDivs = document.querySelectorAll('.sketch-div');
   sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', assignColor))
 }
@@ -167,7 +180,7 @@ function setCanvasSize () {
   if (colNo < 5) {colNo = 5};
   const colWidth = Math.round((535 - 2 - ((colNo-2)*2)) / colNo);
   const rowNo = Math.floor(395 / colWidth);
-  const canvasSize = colNo * rowNo;
+  /* const canvasSize = colNo * rowNo; */
   console.log(rowNo);
  
   while (gridContainer.firstChild) {
@@ -177,7 +190,7 @@ function setCanvasSize () {
   gridContainer.style.gridTemplateColumns = `repeat(${colNo}, 1fr)`;
   gridContainer.style.gridTemplateRows = `repeat(${rowNo}, 1fr)`;
   
-  addSketchDivs(canvasSize);
+  addSketchDivs(colNo,rowNo);
 }
 
 function removeSelected() {
