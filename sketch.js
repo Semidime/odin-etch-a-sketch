@@ -1,9 +1,7 @@
 addSketchDivs(30,24);
 addColorPaletteListener();
 addCanvasListener();
-toggleDisableDrawing();
 let brushColor = 'rgb(0, 0, 0)';
-let disableDrawing = 0;    
 
 /* function to add (n) divs with class "sketch-div", append to grid-container div and attach
 event listener to each sketchDiv*/
@@ -54,61 +52,38 @@ function addColorPaletteListener() {
   rainbowBtn.addEventListener('click',selectRainbowBrush);
 }
 
-function toggleDisableDrawing() {
-  document.addEventListener('keydown',
-  (e)=> {
-    let key = e.key;
-    console.log(key);
-    if(key === 'Control') {
-      disableDrawing = 1;
-    }
-    console.log(disableDrawing);
-  });
-
-  document.addEventListener('keyup',
-  (e)=> {
-    let key = e.key;
-    console.log(key);
-    if(key === 'Control') {
-      disableDrawing = 0;
-    }
-    console.log(disableDrawing);
-  });
-}
-
 /* assignColor function - called on sketchDiv mouseover*/
-function assignColor() {
+function assignColor(e) {
   console.log(this);
+  console.log(e.buttons === 1);
   console.log(this.id);
   const sketchDiv = document.querySelector(`#${this.id}`);
   
-  /* if "rainbow" selected, set background color to change to random color
+  if (e.buttons === 1) {
+      
+    /* if "rainbow" selected, set background color to change to random color
   on each mouseover */
-
-  if (disableDrawing === 1) {
-    return;
-
-  } else if (brushColor === 'rainbow') {
+    if (brushColor === 'rainbow') {
       const R = parseInt(Math.floor(Math.random()*256),10);
       const G = parseInt(Math.floor(Math.random()*256),10);
       const B = parseInt(Math.floor(Math.random()*256),10);
       sketchDiv.style.backgroundColor=`rgb(${R},${G},${B})`;
 
-  } else {
+    } else {
 
-    /* set opacity */
-    if(sketchDiv.style.backgroundColor!=brushColor) {
-      sketchDiv.style.opacity = 0.5;
-    } else if (parseFloat(sketchDiv.style.opacity) < 1) {
-      sketchDiv.style.opacity = parseFloat(sketchDiv.style.opacity) + 0.5;
-    } 
+      /* set opacity */
+      if(sketchDiv.style.backgroundColor!=brushColor) {
+        sketchDiv.style.opacity = 0.5;
+      } else if (parseFloat(sketchDiv.style.opacity) < 1) {
+        sketchDiv.style.opacity = parseFloat(sketchDiv.style.opacity) + 0.5;
+      } 
 
-    /* set backgroundColor */
-    sketchDiv.style.backgroundColor=brushColor;
-  }
-  console.log(sketchDiv.style.backgroundColor);
-  console.log(sketchDiv.style.opacity);
-}
+      /* set backgroundColor */
+      sketchDiv.style.backgroundColor=brushColor;
+    }
+    console.log(sketchDiv.style.backgroundColor);
+    console.log(sketchDiv.style.opacity);
+}}
 
 
 
