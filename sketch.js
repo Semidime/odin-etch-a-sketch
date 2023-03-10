@@ -74,13 +74,12 @@ function assignBGColor() {
 
 /* setBrushColor function */
 function setBrushColor() {
-  console.log(this);
-  console.log(this.id);
+  brushColor = this.style.backgroundColor;
+  console.log(brushColor);
   
-  brushColor = this.style.backgroundColor
-  console.log(brushColor)
-
-}
+  removeSelected();
+  this.classList.add('selected');
+ }
 
 /* setRandomBrushColor function */
 function setRandomBrushColor() {
@@ -93,6 +92,9 @@ function setRandomBrushColor() {
   brushColor=`rgb(${R}, ${G}, ${B})`;
   
   console.log(brushColor)
+
+   removeSelected();applied 
+  this.classList.add('selected');
 
   setRandomBrushBG(R,G,B);                                                                                                                                                                                                                                               
 }
@@ -124,6 +126,9 @@ function selectRainbowBrush() {
   
   brushColor = 'rainbow';
   console.log(brushColor);
+
+  removeSelected();
+  this.classList.add('selected');
 }
 
 
@@ -146,4 +151,9 @@ function setCanvasSize () {
   gridContainer.style.gridTemplateRows = `repeat(${rowNo}, 1fr)`;
   
   addSketchDivs(canvasSize);
+}
+
+function removeSelected() {
+  const selectedDivs = document.querySelectorAll('.selected');
+  selectedDivs.forEach(selectedDiv => selectedDiv.classList.remove('selected'));
 }

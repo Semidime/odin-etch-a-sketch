@@ -76,9 +76,19 @@ body {
     border: 1px solid gray
 }
 
+.selected {
+    /* border: 1px solid lime; */
+    transition: all .3s ease;
+    transform: scale(1.05);
+    box-shadow: 0 0 1rem lime;
+}
+
 #rand-col {
     border: 1px solid gray;
+/*     background-color: white;
+    opacity: 0.9; */
     display: flex;
+    font-weight: bolder;
     justify-content: center;
     align-items: center;
     text-align: center;
