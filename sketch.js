@@ -1,7 +1,9 @@
 addSketchDivs(720);
 addColorPaletteListener();
 addCanvasListener();
-let brushColor = 'rgb(0, 0, 0)';    
+toggleDisableDrawing();
+let brushColor = 'rgb(0, 0, 0)';
+let disableDrawing = 0;    
 
 /* function to add (n) divs with class "sketch-div", append to grid-container div and attach
 event listener to each sketchDiv*/
@@ -18,7 +20,7 @@ function addSketchDivs(n) {
   }
 
   const sketchDivs = document.querySelectorAll('.sketch-div');
-  sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', assignBGColor))
+  sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', assignColor))
 }
 
 /* add event listener to canvas size btn */
@@ -39,8 +41,30 @@ function addColorPaletteListener() {
   rainbowBtn.addEventListener('click',selectRainbowBrush);
 }
 
+function toggleDisableDrawing() {
+  document.addEventListener('keydown',
+  (e)=> {
+    let key = e.key;
+    console.log(key);
+    if(key === 'Control') {
+      disableDrawing = 1;
+    }
+    console.log(disableDrawing);
+  });
+
+  document.addEventListener('keyup',
+  (e)=> {
+    let key = e.key;
+    console.log(key);
+    if(key === 'Control') {
+      disableDrawing = 0;
+    }
+    console.log(disableDrawing);
+  });
+}
+
 /* assignColor function - called on sketchDiv mouseover*/
-function assignBGColor() {
+function assignColor() {
   console.log(this);
   console.log(this.id);
   const sketchDiv = document.querySelector(`#${this.id}`);
@@ -48,11 +72,14 @@ function assignBGColor() {
   /* if "rainbow" selected, set background color to change to random color
   on each mouseover */
 
-  if (brushColor === 'rainbow') {
-    const R = parseInt(Math.floor(Math.random()*256),10);
-    const G = parseInt(Math.floor(Math.random()*256),10);
-    const B = parseInt(Math.floor(Math.random()*256),10);
-    sketchDiv.style.backgroundColor=`rgb(${R},${G},${B})`;
+  if (disableDrawing === 1) {
+    return;
+
+  } else if (brushColor === 'rainbow') {
+      const R = parseInt(Math.floor(Math.random()*256),10);
+      const G = parseInt(Math.floor(Math.random()*256),10);
+      const B = parseInt(Math.floor(Math.random()*256),10);
+      sketchDiv.style.backgroundColor=`rgb(${R},${G},${B})`;
 
   } else {
 
@@ -157,3 +184,4 @@ function removeSelected() {
   const selectedDivs = document.querySelectorAll('.selected');
   selectedDivs.forEach(selectedDiv => selectedDiv.classList.remove('selected'));
 }
+
