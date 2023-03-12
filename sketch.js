@@ -150,17 +150,29 @@ function selectRainbowBrush() {
 /*set custom canvas size */
 function setCanvasSize () {
   const gridContainer = document.querySelector('.grid-container');
+  const easBackground = document.querySelector('.eas-bg');
+  const sketchDivs = document.querySelectorAll('.sketch-div');
   const cols = canvasSlider.value;
-  const rows = canvasSlider.value
- 
-  while (gridContainer.firstChild) {
-    gridContainer.removeChild(gridContainer.lastChild)
-  }
-  
-  gridContainer.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
-  gridContainer.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
-  
-  addSketchDivs(cols,rows);
+  const rows = canvasSlider.value;
+
+/* adds "shake" to classlist for eas-background to apply css animation */
+  easBackground.classList.add('shake');
+
+  /* delay to allow animation effect to run, then remove sketchDivs, remove "shake" class
+  and call function to add new sketchDivs */
+  setTimeout(() => {
+    while (gridContainer.firstChild) {
+      gridContainer.removeChild(gridContainer.lastChild);
+    }
+
+    gridContainer.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+    gridContainer.style.gridTemplateRows = `repeat(${rows}, 1fr)`;  
+
+    easBackground.classList.remove('shake');
+
+    addSketchDivs(cols,rows);
+
+  }, 500); 
 }
 
 function removeSelected() {
