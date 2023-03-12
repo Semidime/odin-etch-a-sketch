@@ -15,6 +15,9 @@ body {
 
 .header, .footer {
     height: 50px;
+    font-size: 10pt;
+    color: black;
+    text-align: center;
 }
 
 .eas-container {
@@ -42,7 +45,7 @@ body {
     width: 535px;
     height: 535px;
     border: 1px solid gray;
-    border-radius: 5%;
+    border-radius: 20px;
     display: grid;
     grid-template-columns: repeat(30, 1fr);
     grid-template-rows: repeat(30, 1fr);
