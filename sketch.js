@@ -150,22 +150,17 @@ function selectRainbowBrush() {
 /*set custom canvas size */
 function setCanvasSize () {
   const gridContainer = document.querySelector('.grid-container');
-  let colNo = parseInt(prompt('Please enter a number between 5 and 50', 30),10);
-  if (colNo > 50) {colNo = 50};
-  if (colNo < 5) {colNo = 5};
-/*   const colWidth = Math.round((535 - 2 - ((colNo-2)*2)) / colNo); */
-  const rowNo = colNo/* Math.floor(395 / colWidth) */;
-  /* const canvasSize = colNo * rowNo; */
-  console.log(rowNo);
+  const cols = canvasSlider.value;
+  const rows = canvasSlider.value
  
   while (gridContainer.firstChild) {
     gridContainer.removeChild(gridContainer.lastChild)
   }
   
-  gridContainer.style.gridTemplateColumns = `repeat(${colNo}, 1fr)`;
-  gridContainer.style.gridTemplateRows = `repeat(${rowNo}, 1fr)`;
+  gridContainer.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+  gridContainer.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
   
-  addSketchDivs(colNo,rowNo);
+  addSketchDivs(cols,rows);
 }
 
 function removeSelected() {
@@ -173,3 +168,10 @@ function removeSelected() {
   selectedDivs.forEach(selectedDiv => selectedDiv.classList.remove('selected'));
 }
 
+const canvasSlider = document.getElementById("canvas-slider");
+const sliderValue = document.getElementById("slider-value");
+
+sliderValue.textContent=`${canvasSlider.value} x ${canvasSlider.value}`;
+canvasSlider.oninput = function () {
+  sliderValue.textContent=`${canvasSlider.value} x ${canvasSlider.value}`
+}

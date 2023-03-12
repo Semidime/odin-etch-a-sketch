@@ -13,7 +13,12 @@ body {
     background-size: cover;
 }
 
-.header, .footer {
+.header {
+    height: 50px;
+    font-size: 10pt;
+}
+
+.footer {
     height: 50px;
     font-size: 10pt;
     color: black;
@@ -25,7 +30,7 @@ body {
     justify-content: space-evenly;
 }
 
-.colour {
+.tools {
     display: flex;
     flex-direction: column;
     align-items: center ;
@@ -55,7 +60,7 @@ body {
 
 .sketch-div {
 /*     background-color: lightgray; */
-/*     border: 1px solid gray; */
+/*     border: 0.5px solid gray; */
 }
 
 .sketch-div.selectedSD {
