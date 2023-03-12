@@ -1,4 +1,4 @@
-addSketchDivs(30,30);
+addSketchDivs(25,25);
 addColorPaletteListener();
 addCanvasListener();
 let brushColor = 'rgb(0, 0, 0)';

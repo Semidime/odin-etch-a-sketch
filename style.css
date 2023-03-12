@@ -30,12 +30,6 @@ body {
     justify-content: space-evenly;
 }
 
-.tools {
-    display: flex;
-    flex-direction: column;
-    align-items: center ;
-}
-
 .eas-bg {
     flex-shrink: 0;
     width: 725px;
@@ -52,8 +46,8 @@ body {
     border: 1px solid gray;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: repeat(30, 1fr);
-    grid-template-rows: repeat(30, 1fr);
+    grid-template-columns: repeat(25, 1fr);
+    grid-template-rows: repeat(25, 1fr);
     grid-column-gap: 1px;
     grid-row-gap: 1px;    
 }
@@ -65,6 +59,13 @@ body {
 
 .sketch-div.selectedSD {
     background-color: firebrick;
+}
+
+.tools {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center ;
 }
 
 .palette-container {
@@ -114,6 +115,21 @@ body {
     text-align: center;
     background-image: url(images/vecteezy_icon-vector-of-eraser-line-style_2.png);
     background-size: 73px;
+}
+
+.canvas-container {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+#slider-value {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #canvasBTN {
