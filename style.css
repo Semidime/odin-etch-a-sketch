@@ -9,8 +9,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-image: url(images/laura-adai-c7u-t1PZEbg-unsplash.jpg);
-    background-size: cover;
+    background-color: linen;
 }
 
 .header {
@@ -36,7 +35,6 @@ body {
     height: 745px;
     background-image: url(images/background_square.png);
     background-size: cover;
-    opacity: 0.95;
 }
 
 .grid-container {
@@ -48,23 +46,17 @@ body {
     display: grid;
     grid-template-columns: repeat(25, 1fr);
     grid-template-rows: repeat(25, 1fr);
-    grid-column-gap: 1.5px;
-    grid-row-gap: 1.5px;    
+    grid-gap: 1.5px;
 }
-
-/* .sketch-div.selectedSD {
-    background-color: firebrick;
-} */
 
 .tools {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center ;
+    align-items: center;
 }
 
 .palette-container {
-    margin: 25px;
     width: 150px;
     height: 500px;
     flex-shrink: 0;
@@ -81,7 +73,6 @@ body {
 }
 
 .selected {
-    /* border: 1px solid lime; */
     transition: all .3s ease;
     transform: scale(1.05);
     box-shadow: 0 0 1rem lime;

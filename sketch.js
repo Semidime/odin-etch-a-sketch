@@ -1,10 +1,12 @@
 addSketchDivs(25,25);
 addColorPaletteListener();
 addCanvasListener();
+
+/* default brushColor */
 let brushColor = 'rgb(0, 0, 0)';
 
 /* function to add (n) divs with class "sketch-div", append to grid-container div and attach
-event listener to each sketchDiv*/
+event listener to each sketch-div*/
 function addSketchDivs(cols, rows) {
   const n = cols * rows;
   const gridContainer = document.querySelector('.grid-container');
@@ -18,7 +20,7 @@ function addSketchDivs(cols, rows) {
     idCounter = idCounter + 1;    
   }
 
-  /* rounded corners */
+  /* apply rounded corners */
   const topLeft = document.querySelector('#SD1');
   const topRight = document.querySelector(`#SD${cols}`);
   const bottomRight = document.querySelector(`#SD${n}`);
@@ -71,7 +73,7 @@ function assignColor(e) {
 
     } else {
 
-      /* set opacity */
+      /* set opacity - first mouseover for selected brushColor sets to 0.5, second sets to 1 */
       if(sketchDiv.style.backgroundColor!=brushColor) {
         sketchDiv.style.opacity = 0.5;
       } else if (parseFloat(sketchDiv.style.opacity) < 1) {
@@ -151,7 +153,6 @@ function selectRainbowBrush() {
 function setCanvasSize () {
   const gridContainer = document.querySelector('.grid-container');
   const easBackground = document.querySelector('.eas-bg');
-  const sketchDivs = document.querySelectorAll('.sketch-div');
   const cols = canvasSlider.value;
   const rows = canvasSlider.value;
 
@@ -175,11 +176,13 @@ function setCanvasSize () {
   }, 500); 
 }
 
+/* function to remove "selected" class from old brushColor selection */
 function removeSelected() {
   const selectedDivs = document.querySelectorAll('.selected');
   selectedDivs.forEach(selectedDiv => selectedDiv.classList.remove('selected'));
 }
 
+/* get input from canvas size range slider.  Display current selection*/
 const canvasSlider = document.getElementById("canvas-slider");
 const sliderValue = document.getElementById("slider-value");
 
