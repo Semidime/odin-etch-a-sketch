@@ -6,6 +6,7 @@
 
 body {
     height: 100vh;
+    min-width: 925px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -13,24 +14,51 @@ body {
 }
 
 .header {
-    height: 50px;
-    font-size: 10pt;
+    flex: 1 1 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+.main-heading {
+    padding: 10px;
+    font-size: 36pt;
+    font-weight: bold;
+}
+
+.sub-heading {
+    padding-bottom: 10px;
+    font-size: 16pt;
+    font-weight: 100;
 }
 
 .footer {
-    height: 50px;
+    flex: 1 1 auto;
+    padding: 20px;
     font-size: 10pt;
     color: black;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+.main {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+}
 .eas-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
 }
 
 .eas-bg {
-    flex-shrink: 0;
+/*     flex-shrink: 0; */
     width: 725px;
     height: 745px;
     background-image: url(images/background_square.png);
@@ -52,7 +80,7 @@ body {
 .tools {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -109,6 +137,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     gap: 10px;
     
 }

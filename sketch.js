@@ -1,5 +1,5 @@
 addSketchDivs(25,25);
-addColorPaletteListener();
+addColorPaletteListeners();
 addCanvasListener();
 
 /* default brushColor */
@@ -42,8 +42,17 @@ function addCanvasListener() {
   canvasBtn.addEventListener('click', setCanvasSize)
 }
 
+/* get input from canvas size range slider.  Display current selection*/
+const canvasSlider = document.getElementById("canvas-slider");
+const sliderValue = document.getElementById("slider-value");
+
+sliderValue.textContent=`${canvasSlider.value} x ${canvasSlider.value}`;
+canvasSlider.oninput = function () {
+  sliderValue.textContent=`${canvasSlider.value} x ${canvasSlider.value}`
+}
+
 /* add event listeners to palette */
-function addColorPaletteListener() {
+function addColorPaletteListeners() {
   const colorDivs = document.querySelectorAll('.color-div');
   colorDivs.forEach(colorDiv => colorDiv.addEventListener('click',setBrushColor));
 
@@ -182,11 +191,4 @@ function removeSelected() {
   selectedDivs.forEach(selectedDiv => selectedDiv.classList.remove('selected'));
 }
 
-/* get input from canvas size range slider.  Display current selection*/
-const canvasSlider = document.getElementById("canvas-slider");
-const sliderValue = document.getElementById("slider-value");
 
-sliderValue.textContent=`${canvasSlider.value} x ${canvasSlider.value}`;
-canvasSlider.oninput = function () {
-  sliderValue.textContent=`${canvasSlider.value} x ${canvasSlider.value}`
-}
