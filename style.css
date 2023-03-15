@@ -6,7 +6,7 @@
 
 body {
     height: 100vh;
-    min-width: 925px;
+    min-width: 800px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -54,21 +54,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 25px;
 }
 
 .eas-bg {
 /*     flex-shrink: 0; */
-    width: 725px;
-    height: 745px;
+    width: 545px;
+    height: 560px;
     background-image: url(images/background_square.png);
     background-size: cover;
 }
 
 .grid-container {
-    margin: 95px 0px 0px 97px;
-    width: 535px;
-    height: 535px;
+    margin: 71px 0px 0px 71px;
+    width: 404px;
+    height: 404px;
     border: 1px solid gray;
     border-radius: 20px;
     display: grid;
@@ -85,8 +85,8 @@ body {
 }
 
 .palette-container {
-    width: 150px;
-    height: 500px;
+    width: 100px;
+    height: 400px;
     flex-shrink: 0;
     opacity: 0.8;
     border: 1px solid gray;
@@ -111,7 +111,7 @@ body {
     display: flex;
     font-weight: bolder;
     justify-content: center;
-    font-size: 48px;
+    font-size: 36px;
     align-items: center;
     text-align: center;
 }
@@ -119,7 +119,9 @@ body {
     border: 1px solid gray;
     text-align: center;
     background-image: url(images/rainbow.png);
-    background-size: cover;
+    background-size: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #eraser {
@@ -128,11 +130,13 @@ body {
     align-items: center;
     text-align: center;
     background-image: url(images/vecteezy_icon-vector-of-eraser-line-style_2.png);
-    background-size: 73px;
+    background-size: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .canvas-container {
-    height: 200px;
+    height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
