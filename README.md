@@ -5,8 +5,6 @@ Assignment to create a Etch-a-Sketch style drawing tool using JavaScript DOM man
 
 
 Image credit:
-
-Background image: Photo by <a href="https://unsplash.com/@lauraadaiphoto?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">laura adai</a> on <a href="https://unsplash.com/photos/c7u-t1PZEbg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   
 Original Etch-a-Sketch image by <a href="https://www.flickr.com/photos/fimoculous/3210330182/in/photostream/">Rex Sorgatz (flickr: fimoculous)</a>
 
