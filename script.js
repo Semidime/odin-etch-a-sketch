@@ -31,9 +31,10 @@ function addSketchDivs(cols, rows) {
   bottomRight.style.borderRadius ='0 0 20px 0'; 
   bottomLeft.style.borderRadius = '0 0 0 20px';
 
-  /* event listener added to each sketchDiv */
+  /* event listeners added to each sketchDiv */
   const sketchDivs = document.querySelectorAll('.sketch-div');
-  sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', assignColor))
+  sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('mouseover', assignColor));
+  sketchDivs.forEach(sketchDiv => sketchDiv.addEventListener('touchmove', assignColorTouch))
 }
 
 /* add event listener to canvas size btn */
@@ -96,6 +97,33 @@ function assignColor(e) {
     console.log(sketchDiv.style.opacity);
 }}
 
+/* assignColorTouch function called on touchmove event*/
+function assignColorTouch() {
+  const sketchDiv = document.querySelector(`#${this.id}`);
+
+  /* if "rainbow" selected, set background color to change to random color
+on each mouseover */
+  if (brushColor === 'rainbow') {
+    const R = parseInt(Math.floor(Math.random()*256),10);
+    const G = parseInt(Math.floor(Math.random()*256),10);
+    const B = parseInt(Math.floor(Math.random()*256),10);
+    sketchDiv.style.backgroundColor=`rgb(${R},${G},${B})`;
+
+  } else {
+
+    /* set opacity - first mouseover for selected brushColor sets to 0.5, second sets to 1 */
+    if(sketchDiv.style.backgroundColor!=brushColor) {
+      sketchDiv.style.opacity = 0.5;
+    } else if (parseFloat(sketchDiv.style.opacity) < 1) {
+      sketchDiv.style.opacity = parseFloat(sketchDiv.style.opacity) + 0.5;
+    } 
+
+    /* set backgroundColor */
+    sketchDiv.style.backgroundColor=brushColor;
+  }
+  console.log(sketchDiv.style.backgroundColor);
+  console.log(sketchDiv.style.opacity);
+}
 
 
 /* setBrushColor function */
