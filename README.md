@@ -3,9 +3,7 @@ The Odin Project: Etch-a-Sketch assignment
 
 Assignment to create a Etch-a-Sketch style drawing tool using JavaScript DOM manipulation, HTML and CSS.
 
-
 Image credit:
-
 
 Original Etch-a-Sketch image by <a href="https://www.flickr.com/photos/fimoculous/3210330182/in/photostream/">Rex Sorgatz (flickr: fimoculous)</a>
 
